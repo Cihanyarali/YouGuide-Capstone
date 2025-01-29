@@ -35,8 +35,8 @@ Next Steps:
 4.	Document all sources, APIs, and progress in the README file.
 5.	Turning the Project to a mobile app with React Native also .
 
-# YouGuide Database Schema
-
+# YouGuide Database Schema ,ER Diagram and CRUD Operations
+## 1. DATABASE SCHEMA
 ##  User Table
 Stores user information. Users can save favorite locations and add custom markers to the map.
 
@@ -135,9 +135,9 @@ To ensure data integrity and maintain historical records, the platform will util
 - **Geofencing Notifications:** Notify users when they enter predefined areas (like landmarks or saved markers).
 - **Mobile App Support:** Extend functionality to a React Native app for cross-platform use.
 
-
+## 2. ER Diagram
 ![YourGuide-ER Diagram](https://github.com/user-attachments/assets/8b93b29d-7ed8-4fb3-919a-10721f5e972d)
-
+## 3. Crud Operations
 ### Users
 
 | Method | Endpoint       | Description                                |
