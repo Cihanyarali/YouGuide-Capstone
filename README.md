@@ -37,7 +37,7 @@ Next Steps:
 
 # YouGuide Database Schema
 
-## 1. User Table
+##  User Table
 Stores user information. Users can save favorite locations and add custom markers to the map.
 
 | Field           | Type               | Description                |
@@ -53,7 +53,7 @@ Stores user information. Users can save favorite locations and add custom marker
 
 ---
 
-## 2. Custom Marker Table
+## Custom Marker Table
 Stores user-created location markers with optional descriptions.
 
 | Field       | Type               | Description                    |
@@ -68,7 +68,7 @@ Stores user-created location markers with optional descriptions.
 
 ---
 
-## 3. Route History Table 
+##  Route History Table 
 Stores route searches and history for users.
 
 | Field          | Type               | Description                |
@@ -82,7 +82,7 @@ Stores route searches and history for users.
 
 ---
 
-## 4. Favorites Table
+##  Favorites Table
 Allows users to save favorite locations for quick access.
 
 | Field      | Type               | Description                   |
@@ -94,7 +94,7 @@ Allows users to save favorite locations for quick access.
 
 ---
 
-## 5. Messaging Table (Future Feature)
+##  Messaging Table (Future Feature)
 Enables user-to-user communication for community suggestions or collaboration.
 
 | Field       | Type               | Description                 |
@@ -108,7 +108,7 @@ Enables user-to-user communication for community suggestions or collaboration.
 
 ---
 
-## 6. Report Table (User Reports)
+##  Report Table (User Reports)
 Allows users to report incorrect or inappropriate markers.
 
 | Field       | Type               | Description                 |
@@ -134,4 +134,60 @@ To ensure data integrity and maintain historical records, the platform will util
 - **WebSockets for Real-Time Chat:** Real-time communication between users for travel collaboration or local tips.
 - **Geofencing Notifications:** Notify users when they enter predefined areas (like landmarks or saved markers).
 - **Mobile App Support:** Extend functionality to a React Native app for cross-platform use.
+
+
+![YourGuide-ER Diagram](https://github.com/user-attachments/assets/8b93b29d-7ed8-4fb3-919a-10721f5e972d)
+
+### Users
+
+| Method | Endpoint       | Description                                |
+|--------|----------------|--------------------------------------------|
+| POST   | `/auth/register` | Register a new user                       |
+| GET    | `/users/{id}`    | Retrieve user details                      |
+| PUT    | `/users/{id}`    | Update profile details                     |
+| PATCH  | `/users/{id}`    | Soft delete account (sets is_deleted=True) |
+
+### Custom Markers
+
+| Method | Endpoint              | Description                               |
+|--------|-----------------------|-------------------------------------------|
+| POST   | `/custom_markers`       | Add a new custom marker                   |
+| GET    | `/custom_markers/{id}`  | Retrieve a specific custom marker         |
+| GET    | `/custom_markers`       | Retrieve all custom markers               |
+| PUT    | `/custom_markers/{id}`  | Edit details of a custom marker           |
+| PATCH  | `/custom_markers/{id}`  | Soft delete a custom marker (sets is_deleted=True) |
+
+### Favorites
+
+| Method | Endpoint        | Description                          |
+|--------|-----------------|--------------------------------------|
+| POST   | `/favorites`      | Save a custom marker as a favorite   |
+| GET    | `/favorites`      | Retrieve saved favorite markers      |
+| DELETE | `/favorites/{id}` | Remove a saved favorite marker       |
+
+### Route History
+
+| Method | Endpoint              | Description                           |
+|--------|-----------------------|---------------------------------------|
+| POST   | `/route_history`        | Save a route search                   |
+| GET    | `/route_history/{id}`   | Retrieve a specific route search      |
+| GET    | `/route_history`        | Retrieve all route history            |
+
+### Messaging
+
+| Method | Endpoint                | Description                           |
+|--------|-------------------------|---------------------------------------|
+| POST   | `/messages`               | Send a message                        |
+| GET    | `/messages/{id}`          | Retrieve a specific message           |
+| GET    | `/messages`               | Retrieve all messages                |
+| DELETE | `/messages/{id}`          | Delete a message                      |
+
+### Reports
+
+| Method | Endpoint              | Description                           |
+|--------|-----------------------|---------------------------------------|
+| POST   | `/reports`              | Report a custom marker                |
+| GET    | `/reports`              | View reports                         |
+| PUT    | `/reports/{id}`         | Change the status of a report         |
+| DELETE | `/reports/{id}`         | Admin-only option to delete a report  |
 
