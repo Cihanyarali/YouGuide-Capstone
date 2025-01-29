@@ -68,7 +68,7 @@ Stores user-created location markers with optional descriptions.
 
 ---
 
-## 3. Route History Table (Optional)
+## 3. Route History Table 
 Stores route searches and history for users.
 
 | Field          | Type               | Description                |
