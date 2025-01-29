@@ -35,3 +35,18 @@ Next Steps:
 4.	Document all sources, APIs, and progress in the README file.
 5.	Turning the Project to a mobile app with React Native also .
 
+### **User Table**  
+Stores user information. Users can act as both buyers and sellers, with an admin role for moderation.
+
+| Field          | Type                      | Description                  |
+|----------------|---------------------------|------------------------------|
+| id             | UUID (Primary Key)        | Unique identifier            |
+| email          | String (Unique)           | User email                   |
+| password       | String                     | Hashed password              |
+| name           | String                     | Full name                    |
+| phone_number   | String                     | Contact number               |
+| role           | ENUM("user", "admin")     | Defines privileges           |
+| profile_picture| String (Optional)         | Profile image URL            |
+| created_at     | Timestamp                  | When the account was created |
+| updated_at     | Timestamp                  | Last profile update          |
+
