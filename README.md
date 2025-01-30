@@ -191,3 +191,194 @@ To ensure data integrity and maintain historical records, the platform will util
 | PUT    | `/reports/{id}`         | Change the status of a report         |
 | DELETE | `/reports/{id}`         | Admin-only option to delete a report  |
 
+
+#API Endpoints
+
+##1. Authentication
+
+POST /api/auth/login
+
+Description: Authenticate user and provide a JWT token.
+
+Request:
+
+{
+  "username": "string",
+  "password": "string"
+}
+
+Response:
+
+{
+  "token": "string"
+}
+
+Authorization: None
+
+2. Destinations
+
+GET /api/destinations
+
+Description: Retrieve a list of popular destinations.
+
+Request Parameters: None
+
+Response:
+
+[
+  {
+    "id": 1,
+    "name": "Istanbul",
+    "country": "Turkey",
+    "description": "Historical and cultural hub."
+  },
+  {
+    "id": 2,
+    "name": "Tokyo",
+    "country": "Japan",
+    "description": "Modern city with traditional roots."
+  }
+]
+
+Authorization: Bearer Token
+
+GET /api/destinations/{id}
+
+Description: Retrieve details about a specific destination.
+
+Request Parameters:
+
+Path Parameter: id (integer)
+
+Response:
+
+{
+  "id": 1,
+  "name": "Istanbul",
+  "country": "Turkey",
+  "description": "Historical and cultural hub.",
+  "points_of_interest": [
+    {
+      "name": "Hagia Sophia",
+      "type": "Historical Landmark"
+    },
+    {
+      "name": "Grand Bazaar",
+      "type": "Market"
+    }
+  ]
+}
+
+Authorization: Bearer Token
+
+3. Itineraries
+
+POST /api/itineraries
+
+Description: Create a new itinerary for a user.
+
+Request:
+
+{
+  "user_id": 1,
+  "destination_id": 1,
+  "activities": ["Visit Hagia Sophia", "Explore the Grand Bazaar"]
+}
+
+Response:
+
+{
+  "id": 101,
+  "user_id": 1,
+  "destination_id": 1,
+  "activities": ["Visit Hagia Sophia", "Explore the Grand Bazaar"]
+}
+
+Authorization: Bearer Token
+
+4. User Reviews
+
+POST /api/reviews
+
+Description: Submit a review for a destination.
+
+Request:
+
+{
+  "user_id": 1,
+  "destination_id": 1,
+  "rating": 5,
+  "comment": "Amazing experience at Hagia Sophia!"
+}
+
+Response:
+
+{
+  "review_id": 301,
+  "user_id": 1,
+  "destination_id": 1,
+  "rating": 5,
+  "comment": "Amazing experience at Hagia Sophia!"
+}
+
+Authorization: Bearer Token
+
+GET /api/reviews/{destination_id}
+
+Description: Retrieve reviews for a specific destination.
+
+Request Parameters:
+
+Path Parameter: destination_id (integer)
+
+Response:
+
+[
+  {
+    "review_id": 301,
+    "user_id": 1,
+    "rating": 5,
+    "comment": "Amazing experience at Hagia Sophia!"
+  },
+  {
+    "review_id": 302,
+    "user_id": 2,
+    "rating": 4,
+    "comment": "Lovely city with vibrant culture."
+  }
+]
+
+Authorization: Bearer Token
+
+Request/Response Formats
+
+Content Type: All requests and responses use application/json.
+
+Error Handling
+
+400: Bad Request
+
+401: Unauthorized
+
+404: Not Found
+
+500: Internal Server Error
+
+Error Response Example:
+
+{
+  "error": "Invalid credentials"
+}
+
+Authorization Requirements
+
+Authentication: JWT-based Bearer Token
+
+Endpoints requiring authorization: All endpoints except /api/auth/login require a valid token in the Authorization header.
+
+Authorization Header Format
+
+Authorization: Bearer <token>
+
+
+
