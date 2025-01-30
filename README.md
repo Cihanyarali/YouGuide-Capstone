@@ -192,22 +192,36 @@ To ensure data integrity and maintain historical records, the platform will util
 | DELETE | `/reports/{id}`         | Admin-only option to delete a report  |
 
 
-#API Endpoints
+# API Documentation
 
-##1. Authentication
+## Table of Contents
+
+Authentication
+
+Destinations
+
+Itineraries
+
+User Reviews
+
+Request/Response Formats
+
+Authorization Requirements
+
+### Authentication
 
 POST /api/auth/login
 
-Description: Authenticate user and provide a JWT token.
+Authenticate user and provide a JWT token.
 
-Request:
+Request
 
 {
   "username": "string",
   "password": "string"
 }
 
-Response:
+Response
 
 {
   "token": "string"
@@ -215,15 +229,13 @@ Response:
 
 Authorization: None
 
-2. Destinations
+### Destinations
 
 GET /api/destinations
 
-Description: Retrieve a list of popular destinations.
+Retrieve a list of popular destinations.
 
-Request Parameters: None
-
-Response:
+Response
 
 [
   {
@@ -244,13 +256,13 @@ Authorization: Bearer Token
 
 GET /api/destinations/{id}
 
-Description: Retrieve details about a specific destination.
+Retrieve details about a specific destination.
 
-Request Parameters:
+Path Parameter
 
-Path Parameter: id (integer)
+id (integer): Destination ID
 
-Response:
+Response
 
 {
   "id": 1,
@@ -271,13 +283,13 @@ Response:
 
 Authorization: Bearer Token
 
-3. Itineraries
+### Itineraries
 
 POST /api/itineraries
 
-Description: Create a new itinerary for a user.
+Create a new itinerary for a user.
 
-Request:
+Request
 
 {
   "user_id": 1,
@@ -285,7 +297,7 @@ Request:
   "activities": ["Visit Hagia Sophia", "Explore the Grand Bazaar"]
 }
 
-Response:
+Response
 
 {
   "id": 101,
@@ -296,13 +308,13 @@ Response:
 
 Authorization: Bearer Token
 
-4. User Reviews
+### User Reviews
 
 POST /api/reviews
 
-Description: Submit a review for a destination.
+Submit a review for a destination.
 
-Request:
+Request
 
 {
   "user_id": 1,
@@ -311,7 +323,7 @@ Request:
   "comment": "Amazing experience at Hagia Sophia!"
 }
 
-Response:
+Response
 
 {
   "review_id": 301,
@@ -325,13 +337,13 @@ Authorization: Bearer Token
 
 GET /api/reviews/{destination_id}
 
-Description: Retrieve reviews for a specific destination.
+Retrieve reviews for a specific destination.
 
-Request Parameters:
+Path Parameter
 
-Path Parameter: destination_id (integer)
+destination_id (integer): Destination ID
 
-Response:
+Response
 
 [
   {
@@ -350,9 +362,11 @@ Response:
 
 Authorization: Bearer Token
 
-Request/Response Formats
+### Request/Response Formats
 
-Content Type: All requests and responses use application/json.
+Content Type
+
+All requests and responses use application/json.
 
 Error Handling
 
@@ -364,16 +378,25 @@ Error Handling
 
 500: Internal Server Error
 
-Error Response Example:
+Error Response Example
 
 {
   "error": "Invalid credentials"
 }
 
-Authorization Requirements
+### Authorization Requirements
 
-Authentication: JWT-based Bearer Token
+Authentication
 
+JWT-based Bearer Token
+
+Authorization Header Format
+
+Authorization: Bearer <token>
+
+Endpoints Requiring Authorization
+
+All endpoints except /api/auth/login require a valid token in the Authorization header.
 Endpoints requiring authorization: All endpoints except /api/auth/login require a valid token in the Authorization header.
 
 Authorization Header Format
