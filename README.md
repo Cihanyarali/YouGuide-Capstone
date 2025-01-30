@@ -192,51 +192,41 @@ To ensure data integrity and maintain historical records, the platform will util
 | DELETE | `/reports/{id}`         | Admin-only option to delete a report  |
 
 
-# API Documentation
+# API Endpoints and Contract for YouGuide
 
-## Table of Contents
+## 1. Authentication
 
-Authentication
+### **POST /api/auth/login**
+**Description:** Authenticate user and provide a JWT token.
 
-Destinations
-
-Itineraries
-
-User Reviews
-
-Request/Response Formats
-
-Authorization Requirements
-
-### Authentication
-
-POST /api/auth/login
-
-Authenticate user and provide a JWT token.
-
-Request
-
+#### Request:
+```json
 {
   "username": "string",
   "password": "string"
 }
+```
 
-Response
-
+#### Response:
+```json
 {
   "token": "string"
 }
+```
+**Authorization:** None
 
-Authorization: None
+---
 
-### Destinations
+## 2. Destinations
 
-GET /api/destinations
+### **GET /api/destinations**
+**Description:** Retrieve a list of popular destinations.
 
-Retrieve a list of popular destinations.
+#### Request Parameters:
+None
 
-Response
-
+#### Response:
+```json
 [
   {
     "id": 1,
@@ -251,19 +241,19 @@ Response
     "description": "Modern city with traditional roots."
   }
 ]
+```
+**Authorization:** Bearer Token
 
-Authorization: Bearer Token
+---
 
-GET /api/destinations/{id}
+### **GET /api/destinations/{id}**
+**Description:** Retrieve details about a specific destination.
 
-Retrieve details about a specific destination.
+#### Request Parameters:
+- **Path Parameter:** `id` (integer)
 
-Path Parameter
-
-id (integer): Destination ID
-
-Response
-
+#### Response:
+```json
 {
   "id": 1,
   "name": "Istanbul",
@@ -280,51 +270,55 @@ Response
     }
   ]
 }
+```
+**Authorization:** Bearer Token
 
-Authorization: Bearer Token
+---
 
-### Itineraries
+## 3. Itineraries
 
-POST /api/itineraries
+### **POST /api/itineraries**
+**Description:** Create a new itinerary for a user.
 
-Create a new itinerary for a user.
-
-Request
-
+#### Request:
+```json
 {
   "user_id": 1,
   "destination_id": 1,
   "activities": ["Visit Hagia Sophia", "Explore the Grand Bazaar"]
 }
+```
 
-Response
-
+#### Response:
+```json
 {
   "id": 101,
   "user_id": 1,
   "destination_id": 1,
   "activities": ["Visit Hagia Sophia", "Explore the Grand Bazaar"]
 }
+```
+**Authorization:** Bearer Token
 
-Authorization: Bearer Token
+---
 
-### User Reviews
+## 4. User Reviews
 
-POST /api/reviews
+### **POST /api/reviews**
+**Description:** Submit a review for a destination.
 
-Submit a review for a destination.
-
-Request
-
+#### Request:
+```json
 {
   "user_id": 1,
   "destination_id": 1,
   "rating": 5,
   "comment": "Amazing experience at Hagia Sophia!"
 }
+```
 
-Response
-
+#### Response:
+```json
 {
   "review_id": 301,
   "user_id": 1,
@@ -332,19 +326,19 @@ Response
   "rating": 5,
   "comment": "Amazing experience at Hagia Sophia!"
 }
+```
+**Authorization:** Bearer Token
 
-Authorization: Bearer Token
+---
 
-GET /api/reviews/{destination_id}
+### **GET /api/reviews/{destination_id}**
+**Description:** Retrieve reviews for a specific destination.
 
-Retrieve reviews for a specific destination.
+#### Request Parameters:
+- **Path Parameter:** `destination_id` (integer)
 
-Path Parameter
-
-destination_id (integer): Destination ID
-
-Response
-
+#### Response:
+```json
 [
   {
     "review_id": 301,
@@ -359,49 +353,37 @@ Response
     "comment": "Lovely city with vibrant culture."
   }
 ]
+```
+**Authorization:** Bearer Token
 
-Authorization: Bearer Token
+---
 
-### Request/Response Formats
+## 5. Request/Response Formats
+**Content Type:** All requests and responses use `application/json`.
 
-Content Type
+### Error Handling
+- **400:** Bad Request
+- **401:** Unauthorized
+- **404:** Not Found
+- **500:** Internal Server Error
 
-All requests and responses use application/json.
-
-Error Handling
-
-400: Bad Request
-
-401: Unauthorized
-
-404: Not Found
-
-500: Internal Server Error
-
-Error Response Example
-
+#### Error Response Example:
+```json
 {
   "error": "Invalid credentials"
 }
+```
 
-### Authorization Requirements
+---
 
-Authentication
+## 6. Authorization Requirements
+**Authentication:** JWT-based Bearer Token
 
-JWT-based Bearer Token
+### Endpoints Requiring Authorization
+All endpoints except `/api/auth/login` require a valid token in the `Authorization` header.
 
-Authorization Header Format
-
+#### Authorization Header Format:
+```
 Authorization: Bearer <token>
-
-Endpoints Requiring Authorization
-
-All endpoints except /api/auth/login require a valid token in the Authorization header.
-Endpoints requiring authorization: All endpoints except /api/auth/login require a valid token in the Authorization header.
-
-Authorization Header Format
-
-Authorization: Bearer <token>
-
-
+```
 
