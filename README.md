@@ -122,7 +122,7 @@ Allows users to report incorrect or inappropriate markers.
 
 ---
 
-## Soft Delete System
+## Soft Delete 
 To ensure data integrity and maintain historical records, the platform will utilize soft delete for key tables:
 
 - **Custom Marker Table:** `is_deleted` (Boolean) field will indicate inactive markers.
