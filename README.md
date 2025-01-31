@@ -137,6 +137,7 @@ To ensure data integrity and maintain historical records, the platform will util
 
 ## 2. ER Diagram
 ![YourGuide-ER Diagram](https://github.com/user-attachments/assets/8b93b29d-7ed8-4fb3-919a-10721f5e972d)
+https://dbdiagram.io/d/679a8a1f263d6cf9a072ca69
 ## 3. Crud Operations
 ### Users
 
