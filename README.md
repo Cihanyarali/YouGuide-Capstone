@@ -374,16 +374,5 @@ None
 }
 ```
 
----
 
-## 6. Authorization Requirements
-**Authentication:** JWT-based Bearer Token
-
-### Endpoints Requiring Authorization
-All endpoints except `/api/auth/login` require a valid token in the `Authorization` header.
-
-#### Authorization Header Format:
-```
-Authorization: Bearer <token>
-```
 
