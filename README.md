@@ -192,7 +192,7 @@ To ensure data integrity and maintain historical records, the platform will util
 | DELETE | `/reports/{id}`         | Admin-only option to delete a report  |
 
 
-# API Endpoints and Contract for YouGuide
+# API Endpoints and Contract 
 
 ## 1. Authentication
 
