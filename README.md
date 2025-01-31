@@ -108,7 +108,7 @@ Enables user-to-user communication for community suggestions or collaboration.
 
 ---
 
-##  Report Table (User Reports)
+##  Reports
 Allows users to report incorrect or inappropriate markers.
 
 | Field       | Type               | Description                 |
