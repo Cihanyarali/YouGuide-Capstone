@@ -374,6 +374,90 @@ None
   "error": "Invalid credentials"
 }
 ```
+API Endpoints
+1. Authentication
+POST /auth/login: Authenticate user and return JWT token.
+2. Destinations
+GET /api/destinations: Get a list of popular destinations.
+GET /api/destinations/{id}: Get details of a specific destination.
+3. Itineraries
+POST /api/itineraries: Create an itinerary for a user.
+4. User Reviews
+POST /api/reviews: Submit a review for a destination.
+GET /api/reviews/{destination_id}: Get reviews for a specific destination.
+Setup Instructions
+1. Clone the Repository
+First, clone the repository to your local machine:
 
+bash
+Kopyala
+git clone https://github.com/your-username/YouGuide.git
+2. Frontend Setup
+Navigate to the frontend directory:
+bash
+Kopyala
+cd youguide-frontend
+Install dependencies:
+bash
+Kopyala
+npm install
+Start the frontend server:
+bash
+Kopyala
+npm run dev
+The frontend will be available at http://localhost:5173.
+
+3. Backend Setup
+Navigate to the backend directory:
+bash
+Kopyala
+cd youguide-backend
+Install dependencies:
+bash
+Kopyala
+npm install
+Set up your environment variables: Create a .env file in the youguide-backend directory and include your MongoDB URI:
+bash
+Kopyala
+MONGO_URI=your-mongodb-uri
+PORT=5000
+Start the backend server:
+bash
+Kopyala
+npm run dev
+The backend will be available at http://localhost:5000.
+
+4. Deploying the Application
+Frontend (YouGuide)
+Build the frontend for production:
+bash
+Kopyala
+npm run build
+You can now deploy the built files to any hosting platform, such as Netlify, Vercel, or AWS S3.
+Backend (YouGuide API)
+Deploy the backend using a cloud platform like AWS, Heroku, or DigitalOcean.
+For AWS EC2 Deployment:
+
+Set up an EC2 instance and SSH into it.
+Install Node.js, MongoDB (or use MongoDB Atlas for a managed database).
+Transfer your files to the EC2 instance.
+Start the Node.js app on EC2 and configure it to run in the background using tools like pm2.
+5. Testing
+Before deploying, it is important to test the functionality of both the frontend and backend.
+
+Frontend Testing: Ensure all UI components are responsive and accessible on both mobile and desktop devices.
+Backend Testing: Test all API endpoints using tools like Postman to ensure they work as expected.
+6. Unit Tests
+You can add unit tests for both the frontend and backend using testing frameworks like Jest or Mocha for JavaScript.
+
+Known Issues
+Offline Support: We currently do not support offline usage of the maps.
+User Messaging: The messaging feature is planned for future versions.
+Future Enhancements
+Geofencing Notifications: Notify users when they enter or exit predefined areas like landmarks.
+Mobile App: We plan to convert this web app to a mobile app using React Native for better portability across platforms.
+Real-Time Collaboration: Introduce real-time collaboration for users to share itineraries or markers.
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 
